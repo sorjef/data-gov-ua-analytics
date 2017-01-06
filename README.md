@@ -47,7 +47,7 @@ It schedules a batch crawling job with the following cron string `0 10 0 * * *`.
 * `elasticsearch_data` - stores ElasticSearch data files
 * `kibana_config` - stores Kibana configuration files
 
-To list the name of the volumes after docker-compose, run:
+To list names of the data volumes, run:
 
 ```sh
 docker volume ls
