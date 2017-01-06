@@ -53,4 +53,4 @@ https://github.com/mishkinstvo/DataGovUaParser
 
 ## License
 
-MIT © [O(one)](oone.tech)
+MIT © [O(one)](http://oone.tech)
