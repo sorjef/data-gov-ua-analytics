@@ -6,7 +6,7 @@ services:
       - ./app:/usr/src/crawler/app
       - metadata:/usr/src/crawler/data
     working_dir: /usr/src/crawler/app
-    command: node app.js --cron "0 10 0 * * *" --run
+    command: node app.js --cron "0 10 0 * * 6" --run
   elasticsearch:
     image: elasticsearch:5.1.1
     ports:

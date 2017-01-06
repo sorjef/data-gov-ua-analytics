@@ -33,7 +33,7 @@ For any other commands, consult [Docker Compose Documentation](https://docs.dock
 
 ## How it works
 
-It schedules a batch crawling job with the following cron string `0 10 0 * * *`. This means that crawler will run every day at 00:10. Check out [app folder](app) for more options.
+It schedules a batch crawling job with the following cron string `0 10 0 * * 6`. This means that crawler will run every Saturday at 00:10. Check out [app folder](app) for more options.
 
 ## Services
 
