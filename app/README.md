@@ -1,4 +1,4 @@
-# Crawler app for [data.gov.ua](data.gov.ua)
+# Node.js crawler app for [data.gov.ua](data.gov.ua)
 
 A simple node.js application to get metadata of datasets from [data.gov.ua](data.gov.ua) and store it in file with retry and backoff strategies.
 
