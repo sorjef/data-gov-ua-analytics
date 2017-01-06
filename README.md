@@ -26,7 +26,7 @@ docker-compose stop
 To fully cleanup the system removing all the downloaded data and containers, run:
 
 ```
-docker-compose down
+docker-compose down --volumes
 ```
 
 For any other commands, consult [Docker Compose Documentation](https://docs.docker.com/compose/)
@@ -64,7 +64,7 @@ docker volume inspect [volume_name]
 `Mountpoint` field represents a path to files on your local filesystem.
 
 ## Troubleshooting
-If you by any chance stop seeing any data after removing all the containers and restarting docker, try checking whether you've reached your daily limit by opening any dataset link [for example this one](http://data.gov.ua/view-dataset/dataset.json?dataset-id=1746ff75-dc39-4460-8035-f25006695d58). If you see a message like "You have reached your limit for today", consider using VPN or [http://proxylist.hidemyass.com/](proxy). If you have a production server consider implementing rotating proxy or using third-party servers like https://crawlera.com/, http://proxymesh.com/ or https://luminati.io/, etc.
+If you by any chance stop seeing any data after removing all the containers and restarting docker, try checking whether you've reached your daily limit by opening any dataset link [for example this one](http://data.gov.ua/view-dataset/dataset.json?dataset-id=1746ff75-dc39-4460-8035-f25006695d58). If you see a message like "You have reached your limit for today", consider using VPN or [proxy](http://proxylist.hidemyass.com/). If you have a production server consider implementing rotating proxy or using third-party servers like https://crawlera.com/, http://proxymesh.com/ or https://luminati.io/, etc.
 
 ## License
 

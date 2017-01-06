@@ -142,6 +142,7 @@ const strategies = {
         for (let i = 1; i < pagesCount; i += 1) {
           queue.add(() => {
             const requestPageI = requestCatalogPage.bind(null, i);
+            log(`Processing page ${i}. ${pagesCount - i} pages left.`);
             return retry(requestPageI, config.retryOptions)
               .then(getDatasetInfos)
               .then(logInfos)
