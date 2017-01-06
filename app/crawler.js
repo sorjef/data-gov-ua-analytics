@@ -16,6 +16,18 @@ const config = {
     interval: 1000,
     backoff: 2,
   },
+  catalogRequestQueue: {
+    concurrency: 10,
+  },
+  datasetInfosQueue: {
+    concurrency: 1,
+    delay: 1000,
+    interval: 1000,
+  },
+  metadataRequestQueue: {
+    concurrency: 1,
+    delay: 300,
+  },
 };
 
 const log = console.log;
@@ -44,9 +56,7 @@ const requestCatalogPage = function requestCatalogPage(i) {
 };
 
 const requestCatalogPages = function requestCatalogPages(pagesCount) {
-  const queue = new BlueBirdQueue({
-    concurrency: 10,
-  });
+  const queue = new BlueBirdQueue(config.catalogRequestQueue);
   for (let i = 1; i < pagesCount; i += 1) {
     queue.add(() => {
       const requestPageI = requestCatalogPage.bind(null, i);
@@ -88,10 +98,7 @@ const requestSingleMetadata = function requestSingleMetadata(dataset) {
 };
 
 const requestMultipleMetadata = function requestMultipleMetadata(datasets) {
-  const queue = new BlueBirdQueue({
-    concurrency: 1,
-    delay: 300,
-  });
+  const queue = new BlueBirdQueue(config.metadataRequestQueue);
   datasets.forEach((dataset) => {
     const retryRequestSingleMetadata =
       retry.bind(retry, requestSingleMetadata.bind(null, dataset), config.retryOptions);
@@ -120,38 +127,34 @@ const writeToFile = function writeToFile(datasets) {
 const strategies = {
   // TODO Add an ability to pass options
   bulk: () => requestCatalog()
-      .then(getPagesCount)
-      .then(requestCatalogPages)
-      .map(getDatasetInfos)
-      .reduce(flattenDatasetInfos, [])
-      .then(logInfos)
-      .then(requestMultipleMetadata)
-      // .filter(filterStructured)
-      .map(writeToFile),
+    .then(getPagesCount)
+    .then(requestCatalogPages)
+    .map(getDatasetInfos)
+    .reduce(flattenDatasetInfos, [])
+    .then(logInfos)
+    .then(requestMultipleMetadata)
+    // .filter(filterStructured)
+    .map(writeToFile),
 
   // TODO Add an ability to pass options
   batch: () =>
-      requestCatalog()
-      .then(getPagesCount)
-      .then((pagesCount) => {
-        const queue = new BlueBirdQueue({
-          concurrency: 1,
-          delay: 1000,
-          interval: 1000,
+    requestCatalog()
+    .then(getPagesCount)
+    .then((pagesCount) => {
+      const queue = new BlueBirdQueue(config.datasetInfosQueue);
+      for (let i = 1; i < pagesCount; i += 1) {
+        queue.add(() => {
+          const requestPageI = requestCatalogPage.bind(null, i);
+          log(`Processing page ${i}. ${pagesCount - i} pages left.`);
+          return retry(requestPageI, config.retryOptions)
+            .then(getDatasetInfos)
+            .then(logInfos)
+            .then(requestMultipleMetadata)
+            .then(appendToFile);
         });
-        for (let i = 1; i < pagesCount; i += 1) {
-          queue.add(() => {
-            const requestPageI = requestCatalogPage.bind(null, i);
-            log(`Processing page ${i}. ${pagesCount - i} pages left.`);
-            return retry(requestPageI, config.retryOptions)
-              .then(getDatasetInfos)
-              .then(logInfos)
-              .then(requestMultipleMetadata)
-              .then(appendToFile);
-          });
-        }
-        return queue.start();
-      }),
+      }
+      return queue.start();
+    }),
 };
 
 module.exports = strategies;
