@@ -12,7 +12,7 @@ To use crawler node.js application separately, check out [app folder](app)
 docker-compose up
 ```
 
-Wait a bit so some data is downloaded and indexed in ES and then open [localhost:5601](localhost:5601) to access Kibana.
+Wait a bit for some data to be downloaded and indexed in ES and then open [localhost:5601](localhost:5601) to access Kibana.
 
 In the "Index Patterns" field, type `data.org.ua-*` and then press "Create". Use kibana to query metadata and setup your visualizations.
 
@@ -31,12 +31,12 @@ For any other commands, consult [Docker Compose Documentation](https://docs.dock
 
 ## How it works
 
-It schedules a batch crawling job with the following cron string `0 10 0 * * *`. This means that crawler will re-crawl website every day at 00:10. Check out [app folder](app) for more options.
+It schedules a batch crawling job with the following cron string `0 10 0 * * *`. This means that crawler will run every day at 00:10. Check out [app folder](app) for more options.
 
 ## Services
 
-* `crawler` - [node.js app](app) to crawl data and store it in file. Volumes:
-* `elasticsearch` - ElasticSearch service. Exposes 9200 port, so use [localhost:9200](localhost:9200) to access ES API. Volumes:
+* `crawler` - [node.js app](app) to crawl data and store it in a file.
+* `elasticsearch` - ElasticSearch service. Exposes 9200 port, so use [localhost:9200](localhost:9200) to access ES API.
 * `logstash` - Logstash service. Configuration files can be found in [logstash folder](logstash)
 * `kibana` - Kibana service. Exposes 5601 port, so open [localhost:5601](localhost:5601) to access Kibana UI.
 
