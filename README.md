@@ -6,7 +6,7 @@ To use crawler node.js application separately, check out [app folder](app)
 ## Prerequisite
 * [Docker](https://www.docker.com/products/docker) (On OSX or Windows use only native docker distribution)
 
-## Getting Started
+## Quickstart
 
 ```
 docker-compose up

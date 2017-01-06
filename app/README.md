@@ -2,7 +2,7 @@
 
 A simple node.js application to get metadata of datasets from [data.gov.ua](data.gov.ua) and store it in file with retry and backoff strategies.
 
-## Getting Started
+## Quickstart
 
 ```sh
 npm i
