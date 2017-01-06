@@ -3,7 +3,7 @@
 A full ETL component which crawls metadata of datasets from [data.gov.ua](http://data.gov.ua) and uploads it to ElasticSearch exposing Kibana as the search UI.
 To use crawler node.js application separately, check out [app folder](app)
 
-![Kibana Screenshot](https://api.monosnap.com/rpc/file/download?id=x1hH7WQYKWgj6LFfjfxQooWprstDhT)
+![Kibana Screenshot](https://api.monosnap.com/rpc/file/download?id=6NCgrFjiOxdZlVmwp5XoQou124JBYn)
 
 ## Prerequisite
 * [Docker](https://www.docker.com/products/docker) (On OSX or Windows use only native docker distribution)
