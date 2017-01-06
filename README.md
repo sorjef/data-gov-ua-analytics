@@ -3,6 +3,8 @@
 A full ETL component which crawls metadata of datasets from [data.gov.ua](http://data.gov.ua) and uploads it to ElasticSearch exposing Kibana as the search UI.
 To use crawler node.js application separately, check out [app folder](app)
 
+![Kibana Screenshot](https://api.monosnap.com/rpc/file/download?id=x1hH7WQYKWgj6LFfjfxQooWprstDhT)
+
 ## Prerequisite
 * [Docker](https://www.docker.com/products/docker) (On OSX or Windows use only native docker distribution)
 
@@ -14,7 +16,7 @@ docker-compose up
 
 Wait a bit for some data to be downloaded and indexed in ES and then open [localhost:5601](localhost:5601) to access Kibana.
 
-In the "Index Patterns" field, type `data.org.ua-*` and then press "Create". Use kibana to query metadata and setup your visualizations.
+In the "Index Patterns" field, type `data.gov.ua-*` and then press "Create". Use kibana to query metadata and setup your visualizations.
 
 To stop containers, execute:
 ```
@@ -60,6 +62,9 @@ docker volume inspect [volume_name]
 ```
 
 `Mountpoint` field represents a path to files on your local filesystem.
+
+## Troubleshooting
+If you by any chance stop seeing any data after removing all the containers and restarting docker, try checking whether you've reached your daily limit by opening any dataset link [for example this one](http://data.gov.ua/view-dataset/dataset.json?dataset-id=1746ff75-dc39-4460-8035-f25006695d58). If you see a message like "You have reached your limit for today", consider using VPN or [http://proxylist.hidemyass.com/](proxy). If you have a production server consider implementing rotating proxy or using third-party servers like https://crawlera.com/, http://proxymesh.com/ or https://luminati.io/, etc.
 
 ## License
 

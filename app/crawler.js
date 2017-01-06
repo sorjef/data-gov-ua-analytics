@@ -106,7 +106,6 @@ const requestMultipleMetadata = function requestMultipleMetadata(datasets) {
 // };
 
 const appendToFile = function appendToFile(datasets) {
-  log(datasets);
   const promise = fs.appendFileAsync(config.metadataFile, `\n${JSON.stringify(datasets)}`, 'utf8');
   log('Metadata appended to', config.metadataFile);
   return promise;
