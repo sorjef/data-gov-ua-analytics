@@ -10,9 +10,9 @@ const config = {
   baseCatalogPageUrl: 'http://data.gov.ua/datasets?field_organization_value=&title=&sort_bef_combine=created%20DESC&sort_order=DESC&sort_by=created&page=',
   datasetsCountElement: '.view-category-dataset-views .field-content .field-content',
   datasetLinkElement: '.views-field-field-big-title a',
-  metadataFile: 'data/metadata.json',
+  metadataFile: `../data/metadata-${new Date().toISOString()}.json`,
   retryOptions: {
-    max_tries: 10,
+    max_tries: 100,
     interval: 1000,
     backoff: 2,
   },
@@ -84,7 +84,7 @@ const requestSingleMetadata = function requestSingleMetadata(dataset) {
   return request({
     uri: dataset.view,
     json: true,
-  }).then(body => Object.assign({}, dataset, { meta: body }));
+  });
 };
 
 const requestMultipleMetadata = function requestMultipleMetadata(datasets) {
@@ -105,12 +105,8 @@ const requestMultipleMetadata = function requestMultipleMetadata(datasets) {
 //     && dataset.files.some(file => config.structuredFormats.includes(file.format));
 // };
 
-const cleanupMetadataFile = function cleanupMetadataFile() {
-  log('Cleaning up metadata file', config.metadataFile, 'if exists');
-  return fs.unlinkAsync(config.metadataFile).catch(() => {});
-};
-
 const appendToFile = function appendToFile(datasets) {
+  log(datasets);
   const promise = fs.appendFileAsync(config.metadataFile, `\n${JSON.stringify(datasets)}`, 'utf8');
   log('Metadata appended to', config.metadataFile);
   return promise;
@@ -123,6 +119,7 @@ const writeToFile = function writeToFile(datasets) {
 };
 
 const strategies = {
+  // TODO Add an ability to pass options
   bulk: () => requestCatalog()
       .then(getPagesCount)
       .then(requestCatalogPages)
@@ -133,13 +130,13 @@ const strategies = {
       // .filter(filterStructured)
       .map(writeToFile),
 
+  // TODO Add an ability to pass options
   batch: () =>
-    cleanupMetadataFile()
-      .then(requestCatalog)
+      requestCatalog()
       .then(getPagesCount)
       .then((pagesCount) => {
         const queue = new BlueBirdQueue({
-          concurrency: 5,
+          concurrency: 1,
           delay: 1000,
           interval: 1000,
         });

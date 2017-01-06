@@ -1,15 +1,66 @@
-# data-gov-ua-crawler
+# Crawler for [data.gov.ua](data.gov.ua)
 
-README TBD...
+A full ETL component which crawls metadata of datasets from [data.gov.ua](data.gov.ua) and uploads it to ElasticSearch exposing Kibana as the search UI.
+To use crawler node.js application separately, check out [app folder](app)
 
-Scripts to crawl data from data.gov.ua website and to upload metadata to ElasticSearch for better search.
+## Prerequisite
+* [Docker](https://www.docker.com/products/docker) (On OSX or Windows use only native docker distribution)
+
+## Getting Started
 
 ```
-npm i
-node batch.js
+docker-compose up
 ```
 
-To import downloaded file to ES
+Wait a bit so some data is downloaded and indexed in ES and then open [localhost:5601](localhost:5601) to access Kibana.
+
+In the "Index Patterns" field, type `data.org.ua-*` and then press "Create". Use kibana to query metadata and setup your visualizations.
+
+To stop containers, execute:
 ```
-node es-import.js
+docker-compose stop
 ```
+
+To fully cleanup the system removing all the downloaded data and containers, run:
+
+```
+docker-compose down
+```
+
+For any other commands, consult [Docker Compose Documentation](https://docs.docker.com/compose/)
+
+## How it works
+
+It schedules a batch crawling job with the following cron string `0 10 0 * * *`. This means that crawler will re-crawl website every day at 00:10. Check out [app folder](app) for more options.
+
+## Services
+
+* `crawler` - [node.js app](app) to crawl data and store it in file. Volumes:
+* `elasticsearch` - ElasticSearch service. Exposes 9200 port, so use [localhost:9200](localhost:9200) to access ES API. Volumes:
+* `logstash` - Logstash service. Configuration files can be found in [logstash folder](logstash)
+* `kibana` - Kibana service. Exposes 5601 port, so open [localhost:5601](localhost:5601) to access Kibana UI.
+
+## Data Volumes
+
+* `metadata` - stores crawled metadata files
+* `elasticsearch_config` - stores ElasticSearch configuration files
+* `elasticsearch_data` - stores ElasticSearch data files
+* `kibana_config` - stores Kibana configuration files
+
+To list the name of the volumes after docker-compose, run:
+
+```sh
+docker volume ls
+```
+
+then
+
+```sh
+docker volume inspect [volume_name]
+```
+
+`Mountpoint` field represents a path to files on your local filesystem.
+
+## License
+
+MIT © [O(one)](oone.tech)

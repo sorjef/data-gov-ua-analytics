@@ -1,0 +1,37 @@
+version: '2'
+services:
+  crawler:
+    image: node:7.4
+    volumes:
+      - ./app:/usr/src/crawler/app
+      - metadata:/usr/src/crawler/data
+    working_dir: /usr/src/crawler/app
+    command: node app.js --cron "0 10 0 * * *" --run
+  elasticsearch:
+    image: elasticsearch:5.1.1
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch_config:/usr/share/elasticsearch/config
+      - elasticsearch_data:/usr/share/elasticsearch/data
+  logstash:
+    image: logstash:5.1.1
+    volumes:
+      - ./logstash:/crawler/logstash
+      - metadata:/crawler/data
+    command: logstash -f /crawler/logstash/metadata.conf
+    depends_on:
+      - elasticsearch
+  kibana:
+    image: kibana:5.1.1
+    ports:
+      - "5601:5601"
+    volumes:
+      - kibana_config:/etc/kibana/
+    depends_on:
+      - elasticsearch
+volumes:
+  metadata: {}
+  elasticsearch_config: {}
+  elasticsearch_data: {}
+  kibana_config: {}

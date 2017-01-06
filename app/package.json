@@ -1,18 +1,27 @@
 {
   "name": "data-gov-ua-crawler",
-  "version": "1.0.0",
-  "description": "",
-  "main": "batch.js",
+  "version": "0.0.1",
+  "description": "A simple node.js application to get metadata of datasets from [data.gov.ua](data.gov.ua) and store it in file.",
+  "main": "app.js",
   "scripts": {
     "test": "node test.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Artem Sorokin",
+    "email": "contact@artemsorokin.com",
+    "url": "artemsorokin.com"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "http://www.opensource.org/licenses/mit-license.php"
+  },
   "dependencies": {
     "bluebird": "^3.4.7",
     "bluebird-queue": "0.0.8",
     "bluebird-retry": "^0.10.1",
     "cheerio": "^0.22.0",
+    "commander": "^2.9.0",
+    "cron": "^1.2.1",
     "elasticsearch": "^12.1.3",
     "fs-bluebird": "^0.1.4",
     "request": "^2.79.0",
