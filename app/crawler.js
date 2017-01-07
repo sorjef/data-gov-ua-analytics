@@ -1,4 +1,5 @@
 const request = require('request-promise');
+const errors = require('request-promise/errors');
 const BlueBirdQueue = require('bluebird-queue');
 const cheerio = require('cheerio');
 const retry = require('bluebird-retry');
@@ -12,21 +13,21 @@ const config = {
   datasetLinkElement: '.views-field-field-big-title a',
   metadataFile: `../data/metadata-${new Date().toISOString()}.json`,
   retryOptions: {
-    max_tries: 100,
+    // To calculate max tries from some maximum time period use the following formula:
+    // log(((1-backoff)*(-entire_max_milliseconds+interval/(1-backoff)))/interval)/log(backoff)
+    max_tries: 25,
     interval: 300,
-    backoff: 2,
+    backoff: 1.5,
+    predicate: e => e instanceof errors.RequestError || e instanceof errors.StatusCodeError,
   },
-  catalogRequestQueue: {
-    concurrency: 1,
-  },
-  datasetInfosQueue: {
-    concurrency: 3,
+  catalogPageRequestQueue: {
+    concurrency: 2,
     delay: 1000,
     interval: 600,
   },
   metadataRequestQueue: {
     concurrency: 3,
-    delay: 300,
+    delay: 400,
   },
 };
 
@@ -57,7 +58,7 @@ const requestCatalogPage = function requestCatalogPage(i) {
 };
 
 const requestCatalogPages = function requestCatalogPages(pagesCount) {
-  const queue = new BlueBirdQueue(config.catalogRequestQueue);
+  const queue = new BlueBirdQueue(config.catalogPageRequestQueue);
   for (let i = 1; i < pagesCount; i += 1) {
     queue.add(() => {
       const requestPageI = requestCatalogPage.bind(null, i);
@@ -142,7 +143,7 @@ const strategies = {
     requestCatalog()
     .then(getPagesCount)
     .then((pagesCount) => {
-      const queue = new BlueBirdQueue(config.datasetInfosQueue);
+      const queue = new BlueBirdQueue(config.catalogPageRequestQueue);
       for (let i = 1; i < pagesCount; i += 1) {
         queue.add(() => {
           const requestPageI = requestCatalogPage.bind(null, i);
