@@ -41,6 +41,9 @@ node app.js --cron "0 17 ? * 0,4-6"
 
 To start job immediately after startup use `--run` option.
 
+## Proxy
+The app uses [global-tunnel](https://www.npmjs.com/package/global-tunnel) package to override `http.Agent` to use proxy settings if it is needed. This can be done by setting `http_proxy` environment variable. For any other options consult [package's doc](https://www.npmjs.com/package/global-tunnel).
+
 ## TODO
 * Add ability to override default options
 * Add EventEmitter functionality

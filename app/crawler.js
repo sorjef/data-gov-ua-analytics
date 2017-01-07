@@ -13,19 +13,19 @@ const config = {
   metadataFile: `../data/metadata-${new Date().toISOString()}.json`,
   retryOptions: {
     max_tries: 100,
-    interval: 1000,
+    interval: 300,
     backoff: 2,
   },
   catalogRequestQueue: {
     concurrency: 10,
   },
   datasetInfosQueue: {
-    concurrency: 1,
+    concurrency: 10,
     delay: 1000,
-    interval: 1000,
+    interval: 300,
   },
   metadataRequestQueue: {
-    concurrency: 1,
+    concurrency: 10,
     delay: 300,
   },
 };
@@ -33,6 +33,7 @@ const config = {
 const log = console.log;
 
 const requestCatalog = function requestCatalog() {
+  log('Requesting data.gov.ua main page');
   return retry(() => request(config.catalogUrl), config.retryOptions);
 };
 

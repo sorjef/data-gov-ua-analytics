@@ -1,6 +1,15 @@
+const http = require('http');
+const HttpProxyAgent = require('http-proxy-agent');
 const program = require('commander');
 const CronJob = require('cron').CronJob;
 const crawler = require('./crawler');
+
+
+// Initialize global agent to use proxy configured with the http_proxy environment variable
+const proxy = process.env.http_proxy;
+if (proxy) {
+  http.globalAgent = new HttpProxyAgent(proxy);
+}
 
 const log = console.log;
 
