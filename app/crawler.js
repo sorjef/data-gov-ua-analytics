@@ -17,15 +17,15 @@ const config = {
     backoff: 2,
   },
   catalogRequestQueue: {
-    concurrency: 3,
+    concurrency: 1,
   },
   datasetInfosQueue: {
     concurrency: 3,
     delay: 1000,
-    interval: 300,
+    interval: 600,
   },
   metadataRequestQueue: {
-    concurrency: 10,
+    concurrency: 3,
     delay: 300,
   },
 };

@@ -1,0 +1,92 @@
+{
+  "template": "data.gov.ua-*",
+  "settings": {
+    "index": {
+      "refresh_interval": "5s"
+    }
+  },
+  "mappings": {
+    "metadata": {
+      "dynamic_templates": [
+        {
+          "string_fields": {
+            "mapping": {
+              "norms": false,
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "match_mapping_type": "string",
+            "match": "*"
+          }
+        }
+      ],
+      "_all": {
+        "norms": false,
+        "enabled": true
+      },
+      "properties": {
+        "revision_id": {
+          "type": "integer"
+        },
+        "last_revision_id": {
+          "type": "integer"
+        },
+        "created": {
+          "type": "date"
+        },
+        "changed": {
+          "type": "date"
+        },
+        "category": {
+          "type": "keyword"
+        },
+        "format_dataset": {
+          "type": "keyword"
+        },
+        "files.format": {
+          "type": "keyword"
+        },
+        "files.filemime": {
+          "type": "keyword"
+        },
+        "files.url": {
+          "type": "keyword"
+        },
+        "responsible_person.email": {
+          "type": "keyword"
+        },
+        "author.category": {
+          "type": "keyword"
+        },
+        "author.website": {
+          "type": "keyword"
+        },
+        "author.phone": {
+          "type": "keyword"
+        },
+        "author.location": {
+          "type": "geo_point"
+        },
+        "author.city": {
+          "type": "keyword"
+        },
+        "author.state": {
+          "type": "keyword"
+        },
+        "author.postal_code": {
+          "type": "keyword"
+        },
+        "language.name": {
+          "type": "keyword"
+        },
+        "language.machine_name": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}

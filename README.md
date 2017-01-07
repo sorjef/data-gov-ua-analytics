@@ -5,7 +5,7 @@
 A full ETL component which crawls metadata of datasets from [data.gov.ua](http://data.gov.ua) utilizing a rotating proxy and uploads it to ElasticSearch exposing Kibana as the search UI.
 To use crawler node.js application separately, check out [app folder](app)
 
-![Kibana Screenshot](https://api.monosnap.com/rpc/file/download?id=7vr3NJUoP1t2NSwMJSnYV4WXzEwaj1)
+![Kibana Screenshot](https://api.monosnap.com/rpc/file/download?id=TQOt9y2mxcHR7UqSZvjfzHrFcphKxT)
 
 ## Prerequisite
 * [Docker](https://www.docker.com/products/docker) (On OSX or Windows use only native docker distribution)
@@ -18,7 +18,9 @@ docker-compose up
 
 Wait a bit for some data to be downloaded and indexed in ES and then open [localhost:5601](localhost:5601) to access Kibana.
 
-In the "Index Patterns" field, type `data.gov.ua-*` and then press "Create". Use kibana to query metadata and setup your visualizations.
+Uncheck `Index contains time-based events` checkbox, in the "Index Patterns" field, type `data.gov.ua-*` and then press "Create". Use kibana to query metadata and setup your visualizations.
+
+If you are already familiar with Kibana time range functionality, you may also leave time-based events checkbox checked and choose `@timestamp`, `created` or `changed` as the default timefield.
 
 ## Cleaning Up
 

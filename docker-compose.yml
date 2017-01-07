@@ -30,7 +30,7 @@ services:
     volumes:
       - ./logstash:/crawler/logstash
       - metadata:/crawler/data
-    command: logstash -f /crawler/logstash/metadata.conf
+    command: bash -c "env GEM_HOME=/usr/share/logstash/vendor/bundle/jruby/1.9 /usr/share/logstash/vendor/jruby/bin/jruby -S gem install geocoder -v 1.4.1 && echo 'gem \"geocoder\", \"~> 1.4.1\"' >> /usr/share/logstash/Gemfile && logstash -f /crawler/logstash/metadata.conf"
     depends_on:
       - elasticsearch
   kibana:
