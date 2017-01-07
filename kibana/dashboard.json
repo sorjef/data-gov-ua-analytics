@@ -17,39 +17,49 @@
     }
   },
   {
-    "_id": "Total-Metadata-Count",
-    "_type": "visualization",
+    "_id": "Search-For-Structured-Files",
+    "_type": "search",
     "_source": {
-      "title": "Total Metadata Count",
-      "visState": "{\"title\":\"Total Metadata Count\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":60},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}}],\"listeners\":{}}",
-      "uiStateJSON": "{}",
+      "title": "Search For Structured Files",
       "description": "",
+      "hits": 0,
+      "columns": [
+        "author.category",
+        "author.organization_name",
+        "title",
+        "format_dataset",
+        "files"
+      ],
+      "sort": [
+        "_score",
+        "desc"
+      ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"data.gov.ua-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"data.gov.ua-*\",\"query\":{\"query_string\":{\"query\":\"files.format:(json OR rdf OR xml OR csv OR yaml OR yml)\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
       }
     }
   },
   {
-    "_id": "Formats-By-Organization-Pie",
+    "_id": "Formats-by-type",
     "_type": "visualization",
     "_source": {
-      "title": "Formats By Organization Pie",
-      "visState": "{\"title\":\"Formats By Organization Pie\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"isDonut\":true},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"files.format.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Format\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"author.organization_name.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Format\"}}],\"listeners\":{}}",
+      "title": "Formats By Type",
+      "visState": "{\n  \"title\": \"Formats by type\",\n  \"type\": \"pie\",\n  \"params\": {\n    \"shareYAxis\": true,\n    \"addTooltip\": true,\n    \"addLegend\": true,\n    \"legendPosition\": \"bottom\",\n    \"isDonut\": false\n  },\n  \"aggs\": [\n    {\n      \"id\": \"1\",\n      \"enabled\": true,\n      \"type\": \"count\",\n      \"schema\": \"metric\",\n      \"params\": {}\n    },\n    {\n      \"id\": \"2\",\n      \"enabled\": true,\n      \"type\": \"filters\",\n      \"schema\": \"segment\",\n      \"params\": {\n        \"filters\": [\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(json OR rdf OR xml OR csv OR yaml OR yml)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Structured\"\n          },\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(xls OR xlsx OR ods)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Semi-structured\"\n          },\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(zip OR 7z OR gzip OR bzip2)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Archives\"\n          },\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(txt OR rtf OR odt OR doc OR docx OR pdf)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Text\"\n          },\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(gif OR tiff OR jpg OR jpeg OR png)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Graphic\"\n          },\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(mpeg OR mkv OR avi OR flv OR mks OR mk3d)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Video\"\n          },\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(mp3 OR wav OR mka)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Audio\"\n          },\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(swf OR flw)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Flash\"\n          }\n        ]\n      }\n    }\n  ],\n  \"listeners\": {}\n}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"data.gov.ua-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
+        "searchSourceJSON": "{\n  \"index\": \"data.gov.ua-*\",\n  \"query\": {\n    \"query_string\": {\n      \"query\": \"*\",\n      \"analyze_wildcard\": true\n    }\n  },\n  \"filter\": []\n}"
       }
     }
   },
   {
-    "_id": "Organizations",
+    "_id": "Formats-in-Categories-Table",
     "_type": "visualization",
     "_source": {
-      "title": "Organizations",
-      "visState": "{\"title\":\"Organizations\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"author.organization_name.keyword\",\"size\":2000,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Organization\"}}],\"listeners\":{}}",
+      "title": "Formats in Categories Table",
+      "visState": "{\"title\":\"Formats in Categories Table\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"files.format.keyword\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Format\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"split\",\"params\":{\"field\":\"category.keyword\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Category\",\"row\":true}}],\"listeners\":{}}",
       "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
       "description": "",
       "version": 1,
@@ -73,26 +83,12 @@
     }
   },
   {
-    "_id": "Formats-in-Categories-Table",
+    "_id": "Organizations",
     "_type": "visualization",
     "_source": {
-      "title": "Formats in Categories Table",
-      "visState": "{\"title\":\"Formats in Categories Table\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"files.format.keyword\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Format\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"split\",\"params\":{\"field\":\"category.keyword\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Category\",\"row\":true}}],\"listeners\":{}}",
+      "title": "Organizations",
+      "visState": "{\"title\":\"Organizations\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"author.organization_name.keyword\",\"size\":2000,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Organization\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"data.gov.ua-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "Formats-by-type",
-    "_type": "visualization",
-    "_source": {
-      "title": "Formats by type",
-      "visState": "{\"title\":\"Formats by type\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"bottom\",\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"filters\",\"schema\":\"segment\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(json OR rdf OR xml OR csv OR yaml OR yml)\",\"analyze_wildcard\":true}}},\"label\":\"Structured\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(xls OR xlsx OR ods)\",\"analyze_wildcard\":true}}},\"label\":\"Semi-structured\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(zip OR 7z OR gzip OR bzip2)\",\"analyze_wildcard\":true}}},\"label\":\"Archives\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(txt OR rtf OR odt OR doc OR docx OR pdf)\",\"analyze_wildcard\":true}}},\"label\":\"Text\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(gif OR tiff OR jpg OR jpeg OR png)\",\"analyze_wildcard\":true}}},\"label\":\"Graphic\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(mpeg OR mkv OR avi OR flv OR mks OR mk3d)\",\"analyze_wildcard\":true}}},\"label\":\"Video\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(mp3 OR wav OR mka)\",\"analyze_wildcard\":true}}},\"label\":\"Audio\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(swf OR flw)\",\"analyze_wildcard\":true}}},\"label\":\"Flash\"}]}}],\"listeners\":{}}",
-      "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
@@ -106,6 +102,20 @@
     "_source": {
       "title": "Files by Format",
       "visState": "{\"title\":\"Files by Format\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"bottom\",\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"files.format.keyword\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"data.gov.ua-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Total-Metadata-Count",
+    "_type": "visualization",
+    "_source": {
+      "title": "Total Metadata Count",
+      "visState": "{\"title\":\"Total Metadata Count\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":60},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
