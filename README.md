@@ -25,6 +25,7 @@ Uncheck `Index contains time-based events` checkbox, in the "Index Patterns" fie
 If you are already familiar with Kibana time range functionality, you may also leave time-based events checkbox checked and choose `@timestamp`, `created` or `changed` as the default timefield for `data.gov.ua-*` index.
 
 To add default visualizations and dashboard like on the screenshot above, follow these steps:
+
 1. Open Kibana - [localhost:5601](http://localhost:5601)
 2. Go to `Management` -> `Saved Objects`
 3. Click `Import` button and choose `dashboard.json` file from [kibana](kibana) folder
