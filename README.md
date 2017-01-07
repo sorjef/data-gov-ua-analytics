@@ -70,4 +70,4 @@ docker volume inspect [volume_name]
 
 ## License
 
-MIT © [O(one)](http://oone.tech)
+MIT
