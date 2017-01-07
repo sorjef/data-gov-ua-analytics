@@ -1,5 +1,7 @@
 # Crawler for [data.gov.ua](http://data.gov.ua)
 
+**PLEASE USE RESPONSIVELY WITH RESPECT TO DATA.GOV.UA INFRASTRUCTURE**
+
 A full ETL component which crawls metadata of datasets from [data.gov.ua](http://data.gov.ua) utilizing a rotating proxy and uploads it to ElasticSearch exposing Kibana as the search UI.
 To use crawler node.js application separately, check out [app folder](app)
 
