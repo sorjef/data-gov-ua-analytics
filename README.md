@@ -2,7 +2,7 @@
 
 **PLEASE USE RESPONSIVELY WITH RESPECT TO DATA.GOV.UA INFRASTRUCTURE**
 
-A full ETL component which crawls metadata of datasets from [data.gov.ua](http://data.gov.ua) utilizing a rotating proxy and uploads it to ElasticSearch exposing Kibana as the search UI.
+A simple to use full ETL component, which reliably (with retries and back-off strategy) crawls metadata of datasets from [data.gov.ua](http://data.gov.ua) utilizing a rotating proxy and uploads it to ElasticSearch exposing Kibana as the search UI. Just one command away to try it!
 To use crawler node.js application separately, check out [app folder](app)
 
 ![Kibana Screenshot](https://api.monosnap.com/rpc/file/download?id=TQOt9y2mxcHR7UqSZvjfzHrFcphKxT)
