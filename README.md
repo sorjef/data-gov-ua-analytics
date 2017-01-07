@@ -20,7 +20,14 @@ Wait a bit for some data to be downloaded and indexed in ES and then open [local
 
 Uncheck `Index contains time-based events` checkbox, in the "Index Patterns" field, type `data.gov.ua-*` and then press "Create". Use kibana to query metadata and setup your visualizations.
 
-If you are already familiar with Kibana time range functionality, you may also leave time-based events checkbox checked and choose `@timestamp`, `created` or `changed` as the default timefield.
+## Kibana
+
+If you are already familiar with Kibana time range functionality, you may also leave time-based events checkbox checked and choose `@timestamp`, `created` or `changed` as the default timefield for `data.gov.ua-*` index.
+
+To add default visualizations and dashboard like on the screenshot above, follow these steps:
+1. Open Kibana - [localhost:5601](http://localhost:5601)
+2. Go to `Management` -> `Saved Objects`
+3. Click `Import` button and choose `dashboard.json` file from [kibana](kibana) folder
 
 ## Cleaning Up
 
@@ -36,13 +43,6 @@ docker-compose down --volumes
 ```
 
 For any other commands, consult [Docker Compose Documentation](https://docs.docker.com/compose/)
-
-## Kibana
-
-To add default visualizations and dashboard like on the screenshot above, follow these steps:
-1. Open Kibana - [localhost:5601](http://localhost:5601)
-2. Go to `Management` -> `Saved Objects`
-3. Click `Import` button and choose `dashboard.json` file from [kibana](kibana) folder
 
 ## How it works
 
