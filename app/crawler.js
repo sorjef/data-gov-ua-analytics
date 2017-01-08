@@ -1,6 +1,7 @@
 const request = require('request-promise');
-const errors = require('request-promise/errors');
-const BlueBirdQueue = require('bluebird-queue');
+const rpErrors = require('request-promise/errors');
+const NoDataFoundError = require('./errors').NoDataFoundError;
+const Promise = require('bluebird');
 const cheerio = require('cheerio');
 const retry = require('bluebird-retry');
 const fs = require('fs-bluebird');
@@ -13,80 +14,87 @@ const config = {
   datasetLinkElement: '.views-field-field-big-title a',
   metadataFile: `../data/metadata-${new Date().toISOString()}.json`,
   retryOptions: {
-    // To calculate max tries from some maximum time period use the following formula:
-    // log(((1-backoff)*(-entire_max_milliseconds+interval/(1-backoff)))/interval)/log(backoff)
-    max_tries: 25,
-    interval: 300,
-    backoff: 1.5,
-    predicate: e => e instanceof errors.RequestError || e instanceof errors.StatusCodeError,
+    max_tries: 480,
+    interval: 400,
+    max_interval: 15 * 60 * 1000, // 15 mins
+    backoff: 2,
+    predicate: e => e instanceof rpErrors.RequestError
+      || e instanceof rpErrors.StatusCodeError
+      || e instanceof NoDataFoundError,
   },
   catalogPageRequestQueue: {
     concurrency: 2,
     delay: 1000,
-    interval: 600,
   },
   metadataRequestQueue: {
-    concurrency: 3,
-    delay: 400,
+    concurrency: 4,
+    delay: 800,
   },
 };
 
 const log = console.log;
 
-const requestCatalog = function requestCatalog() {
-  log('Requesting data.gov.ua main page');
-  return retry(() => request(config.catalogUrl), config.retryOptions);
-};
+const tryRequestPagesCount = function tryRequestPagesCount() {
+  return request(config.catalogUrl).then((res) => {
+    const $ = cheerio.load(res);
+    const datasetCatalogElements = $(config.datasetsCountElement).toArray();
+    const datasetsCount = datasetCatalogElements.reduce((prev, elem) =>
+      prev + parseInt($(elem).text(), 10)
+    , 0);
 
-const getPagesCount = function getPagesCount(res) {
-  const $ = cheerio.load(res);
-  const datasetCatalogElements = $(config.datasetsCountElement).toArray();
-  const datasetsCount = datasetCatalogElements.reduce((prev, elem) =>
-    prev + parseInt($(elem).text(), 10)
-  , 0);
+    if (!datasetsCount) {
+      throw new NoDataFoundError('No datasets count information found on main page');
+    }
 
-  const pagesCount = Math.floor(datasetsCount / 10);
+    const pagesCount = Math.floor(datasetsCount / 10);
 
-  log('Datasets count', datasetsCount);
-  log('Pages count', pagesCount);
+    log('Datasets count', datasetsCount);
+    log('Pages count', pagesCount);
 
-  return pagesCount;
-};
-
-const requestCatalogPage = function requestCatalogPage(i) {
-  return request(config.baseCatalogPageUrl + i);
-};
-
-const requestCatalogPages = function requestCatalogPages(pagesCount) {
-  const queue = new BlueBirdQueue(config.catalogPageRequestQueue);
-  for (let i = 1; i < pagesCount; i += 1) {
-    queue.add(() => {
-      const requestPageI = requestCatalogPage.bind(null, i);
-      return retry(requestPageI, config.retryOptions);
-    });
-  }
-  return queue.start();
-};
-
-const getDatasetInfos = function getDatasetInfos(page) {
-  const $ = cheerio.load(page);
-  const datasets = $(config.datasetLinkElement).toArray().map((elem) => {
-    const link = $(elem).attr('href');
-    const id = link.substr(link.lastIndexOf('/') + 1);
-    return {
-      id,
-      link,
-      view: `http://data.gov.ua/view-dataset/dataset.json?dataset-id=${id}`,
-    };
+    return pagesCount;
   });
-  return datasets;
 };
 
-const flattenDatasetInfos = function flattenDatasetInfos(prev, cur) {
+const requestPagesCount = function requestPagesCount() {
+  log('Requesting data.gov.ua main page');
+  return retry(tryRequestPagesCount, config.retryOptions);
+};
+
+const tryRequestPageDatasets = function tryRequestPageDatasets(i) {
+  return request(config.baseCatalogPageUrl + i).then((page) => {
+    const $ = cheerio.load(page);
+    const datasets = $(config.datasetLinkElement).toArray().map((elem) => {
+      const link = $(elem).attr('href');
+      const id = link.substr(link.lastIndexOf('/') + 1);
+      return { id, view: `http://data.gov.ua/view-dataset/dataset.json?dataset-id=${id}` };
+    });
+
+    if (!datasets.length) {
+      throw new NoDataFoundError('No datasets found on catalog page');
+    }
+
+    return datasets;
+  });
+};
+
+const requestDatasetsByPage = function requestDatasetsByPage(pagesCount, onPageDone = (_ => _)) {
+  const pageNumbers = Array.from(Array(pagesCount).keys());
+  return Promise.map(pageNumbers, (i) => {
+    const page = i + 1;
+    log(`Processing page ${page} of ${pagesCount} (not in order).`);
+
+    const tryRequestPageDatasetsI = tryRequestPageDatasets.bind(null, page);
+    return Promise.delay(config.catalogPageRequestQueue.delay)
+      .then(() => retry(tryRequestPageDatasetsI, config.retryOptions))
+      .then(onPageDone);
+  }, { concurrency: config.catalogPageRequestQueue.concurrency });
+};
+
+const flattenDatasets = function flattenDatasets(prev, cur) {
   return prev.concat(cur);
 };
 
-const logInfos = function logInfos(datasets) {
+const logDatasets = function logDatasets(datasets) {
   log('Found', datasets.length, 'datasets');
   return datasets;
 };
@@ -96,23 +104,22 @@ const requestSingleMetadata = function requestSingleMetadata(dataset) {
   return request({
     uri: dataset.view,
     json: true,
+  }).catch({ statusCode: 500 }, (err) => {
+    let message = err.toString();
+    if (err.response && err.response.statusMessage) {
+      message = new Buffer(err.response.statusMessage, 'ascii').toString('utf-8');
+    }
+    console.error(message);
+    return {};
   });
 };
 
 const requestMultipleMetadata = function requestMultipleMetadata(datasets) {
-  const queue = new BlueBirdQueue(config.metadataRequestQueue);
-  datasets.forEach((dataset) => {
-    const retryRequestSingleMetadata =
-      retry.bind(retry, requestSingleMetadata.bind(null, dataset), config.retryOptions);
-    queue.add(retryRequestSingleMetadata);
-  });
-  return queue.start();
+  return Promise.map(datasets, dataset =>
+    Promise.delay(config.metadataRequestQueue.delay)
+      .then(() => retry(requestSingleMetadata.bind(null, dataset), config.retryOptions))
+  , { concurrency: config.metadataRequestQueue.concurrency });
 };
-
-// const filterStructured = function filterStructured(dataset) {
-//   return dataset.files
-//     && dataset.files.some(file => config.structuredFormats.includes(file.format));
-// };
 
 const appendToFile = function appendToFile(datasets) {
   const promise = fs.appendFileAsync(config.metadataFile, `\n${JSON.stringify(datasets)}`, 'utf8');
@@ -128,35 +135,21 @@ const writeToFile = function writeToFile(datasets) {
 
 const strategies = {
   // TODO Add an ability to pass options
-  bulk: () => requestCatalog()
-    .then(getPagesCount)
-    .then(requestCatalogPages)
-    .map(getDatasetInfos)
-    .reduce(flattenDatasetInfos, [])
-    .then(logInfos)
+  bulk: () => requestPagesCount()
+    .then(requestDatasetsByPage)
+    .reduce(flattenDatasets)
+    .then(logDatasets)
     .then(requestMultipleMetadata)
-    // .filter(filterStructured)
-    .map(writeToFile),
+    .then(writeToFile),
 
   // TODO Add an ability to pass options
-  batch: () =>
-    requestCatalog()
-    .then(getPagesCount)
-    .then((pagesCount) => {
-      const queue = new BlueBirdQueue(config.catalogPageRequestQueue);
-      for (let i = 1; i < pagesCount; i += 1) {
-        queue.add(() => {
-          const requestPageI = requestCatalogPage.bind(null, i);
-          log(`Processing page ${i}. ${pagesCount - i} pages left.`);
-          return retry(requestPageI, config.retryOptions)
-            .then(getDatasetInfos)
-            .then(logInfos)
-            .then(requestMultipleMetadata)
-            .then(appendToFile);
-        });
-      }
-      return queue.start();
-    }),
+  batch: () => requestPagesCount()
+    .then(pagesCount =>
+      requestDatasetsByPage(pagesCount, datasets =>
+        Promise.resolve(logDatasets(datasets))
+          .then(requestMultipleMetadata)
+          .then(appendToFile)))
+    .reduce(flattenDatasets),
 };
 
 module.exports = strategies;

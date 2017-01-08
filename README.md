@@ -19,7 +19,7 @@ To use crawler node.js application separately, check out [app folder](app)
 docker-compose up
 ```
 
-Wait a bit for some data to be downloaded and indexed in ES and then open [localhost:5601](http://localhost:5601) to access Kibana.
+Wait at least 10 minutes for some data to be downloaded and indexed in ES and then open [localhost:5601](http://localhost:5601) to access Kibana.
 
 Uncheck `Index contains time-based events` checkbox, in the "Index Patterns" field, type `data.gov.ua-*` and then press "Create". Use kibana to query metadata and setup your visualizations.
 
