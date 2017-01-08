@@ -24,11 +24,17 @@ const config = {
   },
   catalogPageRequestQueue: {
     concurrency: 2,
-    delay: 1000,
+    delay: {
+      max: 1000,
+      min: 600,
+    },
   },
   metadataRequestQueue: {
     concurrency: 4,
-    delay: 800,
+    delay: {
+      max: 1300,
+      min: 300,
+    },
   },
 };
 
@@ -77,17 +83,23 @@ const tryRequestPageDatasets = function tryRequestPageDatasets(i) {
   });
 };
 
+const randomRange = function randomRange(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+};
+
 const requestDatasetsByPage = function requestDatasetsByPage(pagesCount, onPageDone = (_ => _)) {
   const pageNumbers = Array.from(Array(pagesCount).keys());
+  const options = config.catalogPageRequestQueue;
+  const randomDelay = randomRange.bind(null, options.delay.min, options.delay.max);
   return Promise.map(pageNumbers, (i) => {
     const page = i + 1;
     log(`Processing page ${page} of ${pagesCount} (not in order).`);
 
     const tryRequestPageDatasetsI = tryRequestPageDatasets.bind(null, page);
-    return Promise.delay(config.catalogPageRequestQueue.delay)
+    return Promise.delay(randomDelay())
       .then(() => retry(tryRequestPageDatasetsI, config.retryOptions))
       .then(onPageDone);
-  }, { concurrency: config.catalogPageRequestQueue.concurrency });
+  }, { concurrency: options.concurrency });
 };
 
 const flattenDatasets = function flattenDatasets(prev, cur) {
@@ -99,26 +111,31 @@ const logDatasets = function logDatasets(datasets) {
   return datasets;
 };
 
+const handleMetadataError = function handleMetadataError(datasetId, err) {
+  let message = err.toString();
+  if (err.statusCode === 500 && err.response && err.response.statusMessage) {
+    message = new Buffer(err.response.statusMessage, 'ascii').toString('utf-8');
+  }
+  console.error(message);
+  return { dataset_id: datasetId, statusCode: err.statusCode, error: message };
+};
+
 const requestSingleMetadata = function requestSingleMetadata(dataset) {
   log(dataset.view);
   return request({
     uri: dataset.view,
     json: true,
-  }).catch({ statusCode: 500 }, (err) => {
-    let message = err.toString();
-    if (err.response && err.response.statusMessage) {
-      message = new Buffer(err.response.statusMessage, 'ascii').toString('utf-8');
-    }
-    console.error(message);
-    return {};
-  });
+  }).catch({ statusCode: 500 }, handleMetadataError.bind(null, dataset.id))
+    .catch({ statusCode: 404 }, handleMetadataError.bind(null, dataset.id));
 };
 
 const requestMultipleMetadata = function requestMultipleMetadata(datasets) {
+  const options = config.metadataRequestQueue;
+  const randomDelay = randomRange.bind(null, options.delay.min, options.delay.max);
   return Promise.map(datasets, dataset =>
-    Promise.delay(config.metadataRequestQueue.delay)
+    Promise.delay(randomDelay())
       .then(() => retry(requestSingleMetadata.bind(null, dataset), config.retryOptions))
-  , { concurrency: config.metadataRequestQueue.concurrency });
+  , { concurrency: options.concurrency });
 };
 
 const appendToFile = function appendToFile(datasets) {
