@@ -23,14 +23,14 @@ const config = {
       || e instanceof NoDataFoundError,
   },
   catalogPageRequestQueue: {
-    concurrency: 2,
+    concurrency: 5,
     delay: {
       max: 1000,
       min: 600,
     },
   },
   metadataRequestQueue: {
-    concurrency: 4,
+    concurrency: 10,
     delay: {
       max: 1300,
       min: 300,
@@ -165,8 +165,7 @@ const strategies = {
       requestDatasetsByPage(pagesCount, datasets =>
         Promise.resolve(logDatasets(datasets))
           .then(requestMultipleMetadata)
-          .then(appendToFile)))
-    .reduce(flattenDatasets),
+          .then(appendToFile))),
 };
 
 module.exports = strategies;

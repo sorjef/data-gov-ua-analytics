@@ -8,7 +8,7 @@ A simple to use full ETL component, which reliably (with retries and back-off st
 
 To use crawler node.js application separately, check out [app folder](app)
 
-![Kibana Screenshot](https://api.monosnap.com/rpc/file/download?id=TQOt9y2mxcHR7UqSZvjfzHrFcphKxT)
+![Kibana Screenshot](https://api.monosnap.com/rpc/file/download?id=f2EPnW1yAmsV7kbzLvoGczlmkXOo0e)
 
 ## Prerequisite
 * [Docker](https://www.docker.com/products/docker) (On OSX or Windows use only native docker distribution)
