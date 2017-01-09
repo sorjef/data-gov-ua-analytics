@@ -6,9 +6,9 @@
       "title": "Main Wide",
       "hits": 0,
       "description": "",
-      "panelsJSON": "[{\"col\":1,\"id\":\"Files-by-Format\",\"panelIndex\":1,\"row\":7,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Total-Metadata-Count\",\"panelIndex\":4,\"row\":1,\"size_x\":3,\"size_y\":2,\"type\":\"visualization\"},{\"col\":4,\"id\":\"Formats-in-Categories-Table\",\"panelIndex\":5,\"row\":1,\"size_x\":3,\"size_y\":6,\"type\":\"visualization\"},{\"col\":9,\"id\":\"Formats-By-Top-Organizations-Pie\",\"panelIndex\":6,\"row\":7,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Formats-by-type\",\"panelIndex\":7,\"row\":3,\"size_x\":3,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Ukraine-Datasets-Map\",\"panelIndex\":8,\"row\":1,\"size_x\":6,\"size_y\":6,\"type\":\"visualization\"},{\"col\":5,\"id\":\"Categories-Cloud\",\"panelIndex\":9,\"row\":7,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"}]",
+      "panelsJSON": "[{\"col\":1,\"id\":\"Files-by-Format\",\"panelIndex\":1,\"row\":7,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Total-Metadata-Count\",\"panelIndex\":4,\"row\":1,\"size_x\":3,\"size_y\":2,\"type\":\"visualization\"},{\"col\":4,\"id\":\"Formats-in-Categories-Table\",\"panelIndex\":5,\"row\":1,\"size_x\":3,\"size_y\":6,\"type\":\"visualization\"},{\"col\":9,\"id\":\"Formats-By-Top-Organizations-Pie\",\"panelIndex\":6,\"row\":7,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Formats-by-type\",\"panelIndex\":7,\"row\":3,\"size_x\":3,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Ukraine-Datasets-Map\",\"panelIndex\":8,\"row\":1,\"size_x\":6,\"size_y\":6,\"type\":\"visualization\"},{\"col\":5,\"id\":\"Categories-Cloud\",\"panelIndex\":9,\"row\":7,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"id\":\"Dataset-Format-Percentage-vs-New-Datasets\",\"type\":\"visualization\",\"panelIndex\":10,\"size_x\":4,\"size_y\":4,\"col\":1,\"row\":11},{\"id\":\"Created-Datasets\",\"type\":\"visualization\",\"panelIndex\":11,\"size_x\":4,\"size_y\":4,\"col\":5,\"row\":11},{\"id\":\"Changed-Datasets\",\"type\":\"visualization\",\"panelIndex\":12,\"size_x\":4,\"size_y\":4,\"col\":9,\"row\":11}]",
       "optionsJSON": "{\"darkTheme\":false}",
-      "uiStateJSON": "{\"P-5\":{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}},\"P-7\":{\"vis\":{\"legendOpen\":true}},\"P-8\":{\"mapCenter\":[48.91527985344383,31.190185546874996],\"mapZoom\":6}}",
+      "uiStateJSON": "{\"P-5\":{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}},\"P-7\":{\"vis\":{\"legendOpen\":true}},\"P-8\":{\"mapCenter\":[48.922499263758255,31.245117187499996],\"mapZoom\":6}}",
       "version": 1,
       "timeRestore": false,
       "kibanaSavedObjectMeta": {
@@ -23,7 +23,7 @@
       "title": "Main",
       "hits": 0,
       "description": "",
-      "panelsJSON": "[{\"col\":3,\"id\":\"Files-by-Format\",\"panelIndex\":1,\"row\":7,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Total-Metadata-Count\",\"panelIndex\":4,\"row\":1,\"size_x\":4,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Formats-in-Categories-Table\",\"panelIndex\":5,\"row\":7,\"size_x\":2,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Formats-By-Top-Organizations-Pie\",\"panelIndex\":6,\"row\":7,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Formats-by-type\",\"panelIndex\":7,\"row\":3,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":5,\"id\":\"Ukraine-Datasets-Map\",\"panelIndex\":8,\"row\":1,\"size_x\":8,\"size_y\":6,\"type\":\"visualization\"},{\"id\":\"Created-Datasets\",\"type\":\"visualization\",\"panelIndex\":9,\"size_x\":6,\"size_y\":3,\"col\":1,\"row\":11},{\"id\":\"Changed-Datasets\",\"type\":\"visualization\",\"panelIndex\":10,\"size_x\":6,\"size_y\":2,\"col\":1,\"row\":14},{\"id\":\"Categories-Cloud\",\"type\":\"visualization\",\"panelIndex\":11,\"size_x\":6,\"size_y\":5,\"col\":7,\"row\":11}]",
+      "panelsJSON": "[{\"col\":3,\"id\":\"Files-by-Format\",\"panelIndex\":1,\"row\":7,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Total-Metadata-Count\",\"panelIndex\":4,\"row\":1,\"size_x\":4,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Formats-in-Categories-Table\",\"panelIndex\":5,\"row\":7,\"size_x\":2,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Formats-By-Top-Organizations-Pie\",\"panelIndex\":6,\"row\":7,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Formats-by-type\",\"panelIndex\":7,\"row\":3,\"size_x\":4,\"size_y\":4,\"type\":\"visualization\"},{\"col\":5,\"id\":\"Ukraine-Datasets-Map\",\"panelIndex\":8,\"row\":1,\"size_x\":8,\"size_y\":6,\"type\":\"visualization\"},{\"id\":\"Created-Datasets\",\"type\":\"visualization\",\"panelIndex\":9,\"size_x\":6,\"size_y\":3,\"col\":1,\"row\":11},{\"id\":\"Changed-Datasets\",\"type\":\"visualization\",\"panelIndex\":10,\"size_x\":6,\"size_y\":2,\"col\":1,\"row\":14},{\"id\":\"Categories-Cloud\",\"type\":\"visualization\",\"panelIndex\":11,\"size_x\":6,\"size_y\":5,\"col\":7,\"row\":11},{\"id\":\"Count-of-Datasets-over-Time\",\"type\":\"visualization\",\"panelIndex\":13,\"size_x\":6,\"size_y\":5,\"col\":1,\"row\":16},{\"id\":\"Dataset-Format-Percentage-vs-New-Datasets\",\"type\":\"visualization\",\"panelIndex\":14,\"size_x\":6,\"size_y\":5,\"col\":7,\"row\":16}]",
       "optionsJSON": "{\"darkTheme\":false}",
       "uiStateJSON": "{\"P-5\":{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}},\"P-7\":{\"vis\":{\"legendOpen\":true}},\"P-8\":{\"mapCenter\":[48.90805939965008,31.190185546874996],\"mapZoom\":6}}",
       "version": 1,
@@ -72,20 +72,6 @@
     }
   },
   {
-    "_id": "Total-Metadata-Count",
-    "_type": "visualization",
-    "_source": {
-      "title": "Total Metadata Count",
-      "visState": "{\"title\":\"Total Metadata Count\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":60},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}}],\"listeners\":{}}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"data.gov.ua-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
-      }
-    }
-  },
-  {
     "_id": "Ukraine-Datasets-Map",
     "_type": "visualization",
     "_source": {
@@ -104,12 +90,12 @@
     "_type": "visualization",
     "_source": {
       "title": "File Formats In Dataset By Type",
-      "visState": "{\n  \"title\": \"Formats by type\",\n  \"type\": \"pie\",\n  \"params\": {\n    \"shareYAxis\": true,\n    \"addTooltip\": true,\n    \"addLegend\": true,\n    \"legendPosition\": \"bottom\",\n    \"isDonut\": false\n  },\n  \"aggs\": [\n    {\n      \"id\": \"1\",\n      \"enabled\": true,\n      \"type\": \"count\",\n      \"schema\": \"metric\",\n      \"params\": {}\n    },\n    {\n      \"id\": \"2\",\n      \"enabled\": true,\n      \"type\": \"filters\",\n      \"schema\": \"segment\",\n      \"params\": {\n        \"filters\": [\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(json OR rdf OR xml OR csv OR yaml OR yml)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Structured\"\n          },\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(xls OR xlsx OR ods)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Semi-structured\"\n          },\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(zip OR 7z OR gzip OR bzip2)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Archives\"\n          },\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(txt OR rtf OR odt OR doc OR docx OR pdf)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Text\"\n          },\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(gif OR tiff OR jpg OR jpeg OR png)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Graphic\"\n          },\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(mpeg OR mkv OR avi OR flv OR mks OR mk3d)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Video\"\n          },\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(mp3 OR wav OR mka)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Audio\"\n          },\n          {\n            \"input\": {\n              \"query\": {\n                \"query_string\": {\n                  \"query\": \"files.format:(swf OR flw)\",\n                  \"analyze_wildcard\": true\n                }\n              }\n            },\n            \"label\": \"Flash\"\n          }\n        ]\n      }\n    }\n  ],\n  \"listeners\": {}\n}",
+      "visState": "{\"title\":\"File Formats In Dataset By Type\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"bottom\",\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"filters\",\"schema\":\"segment\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(json OR rdf OR xml OR csv OR yaml OR yml)\",\"analyze_wildcard\":true}}},\"label\":\"Structured\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(xls OR xlsx OR ods)\",\"analyze_wildcard\":true}}},\"label\":\"Semi-structured\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(zip OR 7z OR gzip OR bzip2)\",\"analyze_wildcard\":true}}},\"label\":\"Archives\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(txt OR rtf OR odt OR doc OR docx OR pdf)\",\"analyze_wildcard\":true}}},\"label\":\"Text\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(gif OR tiff OR jpg OR jpeg OR png)\",\"analyze_wildcard\":true}}},\"label\":\"Graphic\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(mpeg OR mkv OR avi OR flv OR mks OR mk3d)\",\"analyze_wildcard\":true}}},\"label\":\"Video\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(mp3 OR wav OR mka)\",\"analyze_wildcard\":true}}},\"label\":\"Audio\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"files.format:(swf OR flw)\",\"analyze_wildcard\":true}}},\"label\":\"Flash\"}]}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\n  \"index\": \"data.gov.ua-*\",\n  \"query\": {\n    \"query_string\": {\n      \"query\": \"*\",\n      \"analyze_wildcard\": true\n    }\n  },\n  \"filter\": []\n}"
+        "searchSourceJSON": "{\"index\":\"data.gov.ua-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
@@ -118,12 +104,12 @@
     "_type": "visualization",
     "_source": {
       "title": "Formats in Categories Table",
-      "visState": "{\n  \"title\": \"Formats in Categories Table\",\n  \"type\": \"table\",\n  \"params\": {\n    \"perPage\": 10,\n    \"showPartialRows\": false,\n    \"showMeticsAtAllLevels\": false,\n    \"sort\": {\n      \"columnIndex\": null,\n      \"direction\": null\n    },\n    \"showTotal\": false,\n    \"totalFunc\": \"sum\"\n  },\n  \"aggs\": [\n    {\n      \"id\": \"1\",\n      \"enabled\": true,\n      \"type\": \"count\",\n      \"schema\": \"metric\",\n      \"params\": {}\n    },\n    {\n      \"id\": \"3\",\n      \"enabled\": true,\n      \"type\": \"terms\",\n      \"schema\": \"bucket\",\n      \"params\": {\n        \"field\": \"files.format\",\n        \"size\": 100,\n        \"order\": \"desc\",\n        \"orderBy\": \"1\",\n        \"customLabel\": \"Format\"\n      }\n    },\n    {\n      \"id\": \"4\",\n      \"enabled\": true,\n      \"type\": \"terms\",\n      \"schema\": \"split\",\n      \"params\": {\n        \"field\": \"category\",\n        \"size\": 100,\n        \"order\": \"desc\",\n        \"orderBy\": \"1\",\n        \"customLabel\": \"Category\",\n        \"row\": true\n      }\n    }\n  ],\n  \"listeners\": {}\n}",
+      "visState": "{\"title\":\"Formats in Categories Table\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"files.format\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Format\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"split\",\"params\":{\"field\":\"category\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Category\",\"row\":true}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"params\": {\n      \"sort\": {\n        \"columnIndex\": null,\n        \"direction\": null\n      }\n    }\n  }\n}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\n  \"index\": \"data.gov.ua-*\",\n  \"query\": {\n    \"query_string\": {\n      \"query\": \"*\",\n      \"analyze_wildcard\": true\n    }\n  },\n  \"filter\": []\n}"
+        "searchSourceJSON": "{\"index\":\"data.gov.ua-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
@@ -132,12 +118,12 @@
     "_type": "visualization",
     "_source": {
       "title": "File Formats in Datasets By Top Organizations Pie",
-      "visState": "{\n  \"title\": \"Formats By Top Organizations Pie\",\n  \"type\": \"pie\",\n  \"params\": {\n    \"shareYAxis\": true,\n    \"addTooltip\": true,\n    \"addLegend\": true,\n    \"legendPosition\": \"right\",\n    \"isDonut\": true\n  },\n  \"aggs\": [\n    {\n      \"id\": \"1\",\n      \"enabled\": true,\n      \"type\": \"count\",\n      \"schema\": \"metric\",\n      \"params\": {}\n    },\n    {\n      \"id\": \"2\",\n      \"enabled\": true,\n      \"type\": \"terms\",\n      \"schema\": \"segment\",\n      \"params\": {\n        \"field\": \"files.format\",\n        \"size\": 10,\n        \"order\": \"desc\",\n        \"orderBy\": \"1\",\n        \"customLabel\": \"Format\"\n      }\n    },\n    {\n      \"id\": \"3\",\n      \"enabled\": true,\n      \"type\": \"terms\",\n      \"schema\": \"segment\",\n      \"params\": {\n        \"field\": \"author.organization_name.keyword\",\n        \"size\": 3,\n        \"order\": \"desc\",\n        \"orderBy\": \"1\",\n        \"customLabel\": \"Format\"\n      }\n    }\n  ],\n  \"listeners\": {}\n}",
+      "visState": "{\"title\":\"File Formats in Datasets By Top Organizations Pie\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"isDonut\":true},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"files.format\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Format\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"author.organization_name.keyword\",\"size\":3,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Format\"}}],\"listeners\":{}}",
       "uiStateJSON": "{\n  \"vis\": {\n    \"legendOpen\": true\n  }\n}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\n  \"index\": \"data.gov.ua-*\",\n  \"query\": {\n    \"query_string\": {\n      \"analyze_wildcard\": true,\n      \"query\": \"*\"\n    }\n  },\n  \"filter\": []\n}"
+        "searchSourceJSON": "{\"index\":\"data.gov.ua-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
       }
     }
   },
@@ -146,12 +132,12 @@
     "_type": "visualization",
     "_source": {
       "title": "Files in Datasets by Format",
-      "visState": "{\n  \"title\": \"Files by Format\",\n  \"type\": \"pie\",\n  \"params\": {\n    \"shareYAxis\": true,\n    \"addTooltip\": true,\n    \"addLegend\": true,\n    \"legendPosition\": \"bottom\",\n    \"isDonut\": false\n  },\n  \"aggs\": [\n    {\n      \"id\": \"1\",\n      \"enabled\": true,\n      \"type\": \"count\",\n      \"schema\": \"metric\",\n      \"params\": {}\n    },\n    {\n      \"id\": \"2\",\n      \"enabled\": true,\n      \"type\": \"terms\",\n      \"schema\": \"segment\",\n      \"params\": {\n        \"field\": \"files.format\",\n        \"size\": 100,\n        \"order\": \"desc\",\n        \"orderBy\": \"1\"\n      }\n    }\n  ],\n  \"listeners\": {}\n}",
+      "visState": "{\"title\":\"Files in Datasets by Format\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"bottom\",\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"files.format\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\n  \"index\": \"data.gov.ua-*\",\n  \"query\": {\n    \"query_string\": {\n      \"query\": \"*\",\n      \"analyze_wildcard\": true\n    }\n  },\n  \"filter\": []\n}"
+        "searchSourceJSON": "{\"index\":\"data.gov.ua-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
@@ -160,12 +146,12 @@
     "_type": "visualization",
     "_source": {
       "title": "Categories Cloud",
-      "visState": "{\n  \"title\": \"Categories Cloud\",\n  \"type\": \"tagcloud\",\n  \"params\": {\n    \"scale\": \"linear\",\n    \"orientation\": \"single\",\n    \"minFontSize\": 18,\n    \"maxFontSize\": 72\n  },\n  \"aggs\": [\n    {\n      \"id\": \"1\",\n      \"enabled\": true,\n      \"type\": \"count\",\n      \"schema\": \"metric\",\n      \"params\": {}\n    },\n    {\n      \"id\": \"2\",\n      \"enabled\": true,\n      \"type\": \"terms\",\n      \"schema\": \"segment\",\n      \"params\": {\n        \"field\": \"category\",\n        \"size\": 30,\n        \"order\": \"desc\",\n        \"orderBy\": \"1\"\n      }\n    }\n  ],\n  \"listeners\": {}\n}",
+      "visState": "{\"title\":\"Categories Cloud\",\"type\":\"tagcloud\",\"params\":{\"scale\":\"linear\",\"orientation\":\"single\",\"minFontSize\":18,\"maxFontSize\":72},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"category\",\"size\":30,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\n  \"index\": \"data.gov.ua-*\",\n  \"query\": {\n    \"query_string\": {\n      \"query\": \"*\",\n      \"analyze_wildcard\": true\n    }\n  },\n  \"filter\": []\n}"
+        "searchSourceJSON": "{\"index\":\"data.gov.ua-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
       }
     }
   },
@@ -174,7 +160,49 @@
     "_type": "visualization",
     "_source": {
       "title": "Created Datasets",
-      "visState": "{\"type\":\"timelion\",\"title\":\"Created Datasets\",\"params\":{\"expression\":\".es(timefield=created).movingaverage(window=20,position=center).legend(false).title(\\\"Created Datasets\\\")\",\"interval\":\"auto\"}}",
+      "visState": "{\"title\":\"Created Datasets\",\"type\":\"timelion\",\"params\":{\"expression\":\"(.es(timefield=created).movingaverage(window=20,position=center).legend(false).title(\\\"Created Datasets\\\").trend(),.es(timefield=created).movingaverage(window=20,position=center).legend(false).title(\\\"Created Datasets\\\"))\",\"interval\":\"auto\"},\"aggs\":[],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Changed-Datasets",
+    "_type": "visualization",
+    "_source": {
+      "title": "Changed Datasets",
+      "visState": "{\"title\":\"Changed Datasets\",\"type\":\"timelion\",\"params\":{\"expression\":\"(.es(timefield=changed).movingaverage(window=20,position=center).legend(false).title(\\\"Changed Datasets\\\").trend(),.es(timefield=changed).movingaverage(window=20,position=center).legend(false).title(\\\"Changed Datasets\\\"))\",\"interval\":\"auto\"},\"aggs\":[],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Total-Metadata-Count",
+    "_type": "visualization",
+    "_source": {
+      "title": "Total Metadata Count",
+      "visState": "{\"title\":\"Total Metadata Count\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":60},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"data.gov.ua-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Changed-vs-Created",
+    "_type": "visualization",
+    "_source": {
+      "title": "Changed vs Created",
+      "visState": "{\"type\":\"timelion\",\"title\":\"Changed vs Created\",\"params\":{\"expression\":\"(.es(timefield=created).movingaverage(window=20,position=center).label(Created),.es(timefield=changed).movingaverage(window=20,position=center).label('Changed')).lines().title(\\\"Created vs Changed Datasets\\\")\",\"interval\":\"auto\"}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
@@ -184,11 +212,25 @@
     }
   },
   {
-    "_id": "Changed-Datasets",
+    "_id": "Count-of-Datasets-over-Time",
     "_type": "visualization",
     "_source": {
-      "title": "Changed Datasets",
-      "visState": "{\"type\":\"timelion\",\"title\":\"Changed Datasets\",\"params\":{\"expression\":\".es(timefield=changed).movingaverage(window=20,position=center).legend(false).title(\\\"Changed Datasets\\\")\",\"interval\":\"auto\"}}",
+      "title": "Count of Datasets over Time",
+      "visState": "{\"type\":\"timelion\",\"title\":\"Count of Datasets over Time\",\"params\":{\"expression\":\".es(timefield=created).cusum(0)\",\"interval\":\"auto\"}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{}"
+      }
+    }
+  },
+  {
+    "_id": "Dataset-Format-Percentage-vs-New-Datasets",
+    "_type": "visualization",
+    "_source": {
+      "title": "Dataset Format Percentage vs New Datasets",
+      "visState": "{\"type\":\"timelion\",\"title\":\"Dataset Format Percentage vs New Datasets\",\"params\":{\"expression\":\"(.es('format_dataset:(gif OR tiff OR jpg OR jpeg OR png)',timefield=created).movingaverage(100, center).divide(.es(timefield=created).movingaverage(100, center)).label(\\\"Image (gif, tiff, jpeg, png)\\\"),.es('format_dataset:(txt OR rtf OR odt OR doc OR docx OR pdf)',timefield=created).movingaverage(100, center).divide(.es(timefield=created).movingaverage(100, center)).label('Text (txt, rtf, doc, pdf)'),.es('format_dataset:(xls OR xlsx OR ods)',timefield=created).movingaverage(100, center).divide(.es(timefield=created).movingaverage(100, center)).label(\\\"Semi-Structured (xls, xlsx, ods)\\\"),.es('json OR rdf OR xml OR csv OR yaml OR yml',timefield=created).movingaverage(100, center).divide(.es(timefield=created).movingaverage(100, center)).label(\\\"Structured (json, csv)\\\")).multiply(100).title('Dataset Format Percentage vs New Datasets')\",\"interval\":\"auto\"}}",
       "uiStateJSON": "{}",
       "description": "",
       "version": 1,
