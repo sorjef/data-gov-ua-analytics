@@ -4,9 +4,11 @@
 
 A simple to use full ETL component, which reliably gets metadata of datasets from [data.gov.ua](http://data.gov.ua) and uploads it to ElasticSearch exposing Kibana as the search and analytics UI.
 
-*One command away from starting it - [Quickstart](#quickstart)*
+To use crawler application separately or to change its parameters, check out [app folder](app)
 
-To use crawler application separately, check out [app folder](app)
+**Default crawler options are set accordingly to data.gov.ua robots.txt `Crawl-delay` parameter from 09/01/2017, which is equal to 10 seconds delay between requests.**
+
+*One command away from starting it - [Quickstart](#quickstart)*
 
 ![Kibana Screenshot](https://api.monosnap.com/rpc/file/download?id=f2EPnW1yAmsV7kbzLvoGczlmkXOo0e)
 
@@ -19,7 +21,7 @@ To use crawler application separately, check out [app folder](app)
 docker-compose up
 ```
 
-Wait at least 10 minutes for some data to be downloaded and indexed in ES and then open [localhost:5601](http://localhost:5601) to access Kibana.
+Wait at least 30 minutes for some data to be downloaded and indexed in ES and then open [localhost:5601](http://localhost:5601) to access Kibana.
 
 Uncheck `Index contains time-based events` checkbox, in the "Index Patterns" field, type `data.gov.ua-*` and then press "Create". Use kibana to query metadata and setup your visualizations.
 
@@ -83,4 +85,4 @@ docker volume inspect [volume_name]
 
 ## License
 
-MIT
+MIT (c) [O(one)](http://oone.tech)

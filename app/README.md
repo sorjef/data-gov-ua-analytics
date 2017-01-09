@@ -1,8 +1,10 @@
 # Crawler for [data.gov.ua](http://data.gov.ua)
 
-**PLEASE USE RESPONSIVELY WITH RESPECT TO DATA.GOV.UA INFRASTRUCTURE**
+**PLEASE USE RESPONSIVELY WITH RESPECT TO DATA.GOV.UA INFRASTRUCTURE.**
 
 A simple node.js application to get metadata of datasets from [data.gov.ua](http://data.gov.ua) and store it in file with retry and backoff strategies.
+
+**Default options are set accordingly to data.gov.ua robots.txt `Crawl-delay` parameter from 09/01/2017, which is equal to 10 seconds delay between requests.**
 
 ## Quickstart
 
@@ -44,7 +46,7 @@ node app.js --cron "0 17 ? * 0,4-6"
 To start job immediately after startup use `--run` option.
 
 ## Proxy
-The app uses [global-tunnel](https://www.npmjs.com/package/global-tunnel) package to override `http.Agent` to use proxy settings if it is needed. This can be done by setting `http_proxy` environment variable. For any other options consult [package's doc](https://www.npmjs.com/package/global-tunnel).
+The app uses [http-proxy-agent](https://github.com/TooTallNate/node-http-proxy-agent) package to override `http.globalAgent` to use proxy settings if it is needed. This can be done by setting `http_proxy` environment variable.
 
 ## TODO
 * Add ability to override default options
@@ -58,4 +60,4 @@ https://github.com/mishkinstvo/DataGovUaParser
 
 ## License
 
-MIT
+MIT (c) [O(one)](http://oone.tech)

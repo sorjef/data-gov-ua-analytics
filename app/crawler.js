@@ -15,7 +15,7 @@ const config = {
   metadataFile: `../data/metadata-${new Date().toISOString()}.json`,
   retryOptions: {
     max_tries: 480,
-    interval: 400,
+    interval: 10 * 1000, // 10 seconds
     max_interval: 15 * 60 * 1000, // 15 mins
     backoff: 2,
     predicate: e => e instanceof rpErrors.RequestError
@@ -23,17 +23,17 @@ const config = {
       || e instanceof NoDataFoundError,
   },
   catalogPageRequestQueue: {
-    concurrency: 5,
+    concurrency: 1,
     delay: {
-      max: 1000,
-      min: 600,
+      max: 15000,
+      min: 10000,
     },
   },
   metadataRequestQueue: {
-    concurrency: 10,
+    concurrency: 1,
     delay: {
-      max: 1300,
-      min: 300,
+      max: 15000,
+      min: 10000,
     },
   },
 };
