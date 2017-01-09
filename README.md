@@ -52,7 +52,7 @@ For any other commands, consult [Docker Compose Documentation](https://docs.dock
 
 ## How it works
 
-It schedules a batch crawling job with the following cron string `0 10 0 * * 6`. This means that crawler will run every Saturday at 00:10. Check out [app folder](app) for more options. It also runs a [docker container with rotating proxy](https://github.com/mattes/rotating-proxy) installed based on [HAProxy](http://www.haproxy.org/) and [Tor](https://www.torproject.org/) as data.gov.ua has API request limits per IP.
+It schedules a batch crawling job with the following cron string `0 10 0 * * 6`. This means that crawler will run every Saturday at 00:10. Check out [app folder](app) for more options. It also runs a [docker container with rotating proxy](https://github.com/mattes/rotating-proxy) installed based on [HAProxy](http://www.haproxy.org/).
 
 ## Services
 
