@@ -4,7 +4,7 @@
 
 A simple node.js application to get metadata of datasets from [data.gov.ua](http://data.gov.ua) and store it in file with retry and backoff strategies.
 
-**Default options are set accordingly to data.gov.ua robots.txt `Crawl-delay` parameter from 09/01/2017, which is equal to 10 seconds delay between requests.**
+**Default options are set accordingly to data.gov.ua robots.txt `Crawl-delay` parameter from 09/01/2017, which equals to 10 seconds delay between requests.**
 
 ## Quickstart
 

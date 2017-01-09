@@ -6,7 +6,7 @@ A simple to use full ETL component, which reliably gets metadata of datasets fro
 
 To use crawler application separately or to change its parameters, check out [app folder](app)
 
-**Default crawler options are set accordingly to data.gov.ua robots.txt `Crawl-delay` parameter from 09/01/2017, which is equal to 10 seconds delay between requests.**
+**Default crawler options are set accordingly to data.gov.ua robots.txt `Crawl-delay` parameter from 09/01/2017, which equals to 10 seconds delay between requests.**
 
 *One command away from starting it - [Quickstart](#quickstart)*
 
