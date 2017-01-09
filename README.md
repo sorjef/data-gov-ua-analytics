@@ -1,12 +1,12 @@
-# Crawler for [data.gov.ua](http://data.gov.ua)
+# Analytics for [data.gov.ua](http://data.gov.ua)
 
 **PLEASE USE RESPONSIVELY WITH RESPECT TO DATA.GOV.UA INFRASTRUCTURE**
 
-A simple to use full ETL component, which reliably (with retries and back-off strategy) crawls metadata of datasets from [data.gov.ua](http://data.gov.ua) utilizing a rotating proxy and uploads it to ElasticSearch exposing Kibana as the search UI.
+A simple to use full ETL component, which reliably gets metadata of datasets from [data.gov.ua](http://data.gov.ua) and uploads it to ElasticSearch exposing Kibana as the search and analytics UI.
 
 *One command away from starting it - [Quickstart](#quickstart)*
 
-To use crawler node.js application separately, check out [app folder](app)
+To use crawler application separately, check out [app folder](app)
 
 ![Kibana Screenshot](https://api.monosnap.com/rpc/file/download?id=f2EPnW1yAmsV7kbzLvoGczlmkXOo0e)
 

@@ -1,4 +1,4 @@
-# Node.js crawler app for [data.gov.ua](http://data.gov.ua)
+# Crawler for [data.gov.ua](http://data.gov.ua)
 
 **PLEASE USE RESPONSIVELY WITH RESPECT TO DATA.GOV.UA INFRASTRUCTURE**
 
