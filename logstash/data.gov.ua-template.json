@@ -24,10 +24,6 @@
           }
         }
       ],
-      "_all": {
-        "norms": false,
-        "enabled": true
-      },
       "properties": {
         "revision_id": {
           "type": "integer"

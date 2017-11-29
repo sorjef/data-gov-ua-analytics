@@ -1,12 +1,7 @@
 version: '2'
 services:
   proxy:
-    image: mattes/rotating-proxy
-    ports:
-      - "5566:5566"
-      - "4444:4444"
-    environment:
-      - tors=25
+    image: rdsubhas/tor-privoxy-alpine
   crawler:
     image: node:7.4
     volumes:
@@ -17,32 +12,32 @@ services:
     depends_on:
       - proxy
     environment:
-      - http_proxy=http://proxy:5566/
+      - http_proxy=http://proxy:8118/
   elasticsearch:
-    image: elasticsearch:5.1.1
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.0.0
     ports:
       - "9200:9200"
     volumes:
-      - elasticsearch_config:/usr/share/elasticsearch/config
+      # - elasticsearch_config:/usr/share/elasticsearch/config
       - elasticsearch_data:/usr/share/elasticsearch/data
   logstash:
-    image: logstash:5.1.1
+    image: docker.elastic.co/logstash/logstash-oss:6.0.0
     volumes:
       - ./logstash:/crawler/logstash
       - metadata:/crawler/data
-    command: bash -c "env GEM_HOME=/usr/share/logstash/vendor/bundle/jruby/1.9 /usr/share/logstash/vendor/jruby/bin/jruby -S gem install geocoder -v 1.4.1 && echo 'gem \"geocoder\", \"~> 1.4.1\"' >> /usr/share/logstash/Gemfile && logstash -f /crawler/logstash/metadata.conf"
+    command: bash -c "env GEM_HOME=$$(echo /usr/share/logstash/vendor/bundle/jruby/*/) /opt/logstash/vendor/jruby/bin/jruby /opt/logstash/vendor/jruby/bin/gem install geocoder -v 1.4.4 && echo 'gem \"geocoder\", \"~> 1.4.4\"' >> /usr/share/logstash/Gemfile && logstash -f /crawler/logstash/metadata.conf"
     depends_on:
       - elasticsearch
   kibana:
-    image: kibana:5.1.1
+    image: docker.elastic.co/kibana/kibana-oss:6.0.0
     ports:
       - "5601:5601"
-    volumes:
-      - kibana_config:/etc/kibana/
+    # volumes:
+    #  - kibana_config:/etc/kibana/
     depends_on:
       - elasticsearch
 volumes:
   metadata: {}
-  elasticsearch_config: {}
   elasticsearch_data: {}
-  kibana_config: {}
+  # elasticsearch_config: {}
+  # kibana_config: {}

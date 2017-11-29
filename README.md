@@ -32,8 +32,15 @@ If you are already familiar with Kibana time range functionality, you may also l
 To add default visualizations and dashboard like on the screenshot above, follow these steps:
 
 1. Open Kibana - [localhost:5601](http://localhost:5601)
-2. Go to `Management` -> `Saved Objects`
-3. Click `Import` button and choose `dashboard.json` file from [kibana](kibana) folder
+1. Go to `Management` -> `Index Patterns`
+1. Set `data.gov.ua-*` as an index pattern and choose any `created` or `updated` field as your time based field if you want to run Timelion queries.
+1. Go to `Management` -> `Saved Objects`
+1. Click `Import` button and choose `dashboard.json` file from [kibana](kibana) folder
+1. Go to `Dashboard` and click `Open`
+1. Select one of the 2 dashboards available
+1. If you chose a time-based field when setting index pattern, you will not see any statistics until you change the time range in the top right corner of the kibana dashboard.
+
+To get more information on how to use Kibana consult its [documentation](https://www.elastic.co/guide/en/kibana/6.0/index.html)
 
 ## Cleaning Up
 
