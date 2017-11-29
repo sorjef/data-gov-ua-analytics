@@ -18,7 +18,7 @@ services:
     ports:
       - "9200:9200"
     volumes:
-      # - elasticsearch_config:/usr/share/elasticsearch/config
+      - elasticsearch_config:/usr/share/elasticsearch/config
       - elasticsearch_data:/usr/share/elasticsearch/data
   logstash:
     image: docker.elastic.co/logstash/logstash-oss:6.0.0
@@ -32,12 +32,12 @@ services:
     image: docker.elastic.co/kibana/kibana-oss:6.0.0
     ports:
       - "5601:5601"
-    # volumes:
-    #  - kibana_config:/etc/kibana/
+    volumes:
+     - kibana_config:/etc/kibana/
     depends_on:
       - elasticsearch
 volumes:
   metadata: {}
   elasticsearch_data: {}
-  # elasticsearch_config: {}
-  # kibana_config: {}
+  elasticsearch_config: {}
+  kibana_config: {}
