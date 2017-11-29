@@ -52,7 +52,7 @@ docker-compose stop
 To fully cleanup the system removing all the downloaded data and containers, run:
 
 ```
-docker-compose down --volumes
+docker-compose down --rmi all
 ```
 
 For any other commands, consult [Docker Compose Documentation](https://docs.docker.com/compose/)
